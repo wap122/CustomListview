@@ -20,13 +20,11 @@ import java.util.ArrayList;
 public class CustemAdapterNew extends BaseAdapter {
     private Context context;
     private ArrayList<Contact> arrContact;
-    LayoutInflater inflater;
 
     public CustemAdapterNew(Context context, ArrayList<Contact> arrContact) {
         super();
         this.context = context;
         this.arrContact = arrContact;
-        inflater = LayoutInflater.from(context);
     }
 
     @Override
@@ -48,7 +46,7 @@ public class CustemAdapterNew extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
         if (convertView == null) {
-            convertView = inflater.inflate(R.layout.row_contact_layout, null);
+            convertView = LayoutInflater.from(context).inflate(R.layout.row_contact_layout, null);
             viewHolder = new ViewHolder();
             viewHolder.tvColor = (TextView) convertView.findViewById(R.id.tv_color);
             viewHolder.tvName = (TextView) convertView.findViewById(R.id.tv_name);
