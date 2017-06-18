@@ -3,15 +3,11 @@ package model;
 import android.content.Context;
 import android.widget.BaseAdapter;
 
-import android.app.Activity;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
+
 
 import com.example.minhl.customlistview.R;
 
@@ -30,6 +26,7 @@ public class CustemAdapterNew extends BaseAdapter {
         super();
         this.context = context;
         this.arrContact = arrContact;
+        inflater = LayoutInflater.from(context);
     }
 
     @Override
@@ -51,7 +48,7 @@ public class CustemAdapterNew extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder;
         if (convertView == null) {
-            convertView = inflater.inflate(R.layout.row_contact_layout, parent);
+            convertView = inflater.inflate(R.layout.row_contact_layout, null);
             viewHolder = new ViewHolder();
             viewHolder.tvColor = (TextView) convertView.findViewById(R.id.tv_color);
             viewHolder.tvName = (TextView) convertView.findViewById(R.id.tv_name);
