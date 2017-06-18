@@ -3,7 +3,10 @@ package com.example.minhl.customlistview;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -23,17 +26,17 @@ public class MainActivity extends AppCompatActivity {
         lvContact = (ListView) findViewById(R.id.lv_contact);
 
         lvContact.setAdapter(new CustemAdapterNew(this, arrayContact));
-//        lvContact.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Toast.makeText(MainActivity.this, String.valueOf(arrayContact.get(position)), Toast.LENGTH_SHORT).show();
-//            }
-//        });
+        lvContact.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(MainActivity.this, String.valueOf(arrayContact.get(position).getmName()), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public void initWidget() {
 
-        Contact contact1 = new Contact("Trương Đình Chiến", "0988 933 xxx", Color.RED);
+        Contact contact1 = new Contact("Le Van Minh", "098123xxx", Color.RED);
         Contact contact2 = new Contact("Võ Văn Tá", "01667 585 545", Color.GREEN);
         Contact contact3 = new Contact("Lê Tấn Dũng", "0918 033 033", Color.GRAY);
         Contact contact4 = new Contact("Trương Quang Lâm", "0978 102 102", Color.YELLOW);
