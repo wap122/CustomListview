@@ -63,7 +63,7 @@ public class CustemAdapterNew extends BaseAdapter {
         return convertView;
     }
 
-    public class ViewHolder {
+    private class ViewHolder {
         TextView tvName;
         TextView tvColor;
         TextView tvNumber;
