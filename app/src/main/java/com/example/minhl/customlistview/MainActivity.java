@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import model.Contact;
 import model.CustemAdapterNew;
 
-public class MainActivity extends AppCompatActivity implements OnCustomEventListener{
+public class MainActivity extends AppCompatActivity implements OnCustomEventListener {
 
     private ListView lvContact;
     private ArrayList<Contact> arrayContact = new ArrayList<>();
@@ -26,7 +26,13 @@ public class MainActivity extends AppCompatActivity implements OnCustomEventList
         initWidget();
         lvContact = (ListView) findViewById(R.id.lv_contact);
 
-        lvContact.setAdapter(new CustemAdapterNew(this,this, arrayContact));
+        lvContact.setAdapter(new CustemAdapterNew(this, this, arrayContact));
+        lvContact.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(MainActivity.this, "Chạm vào Name để finish activity", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override

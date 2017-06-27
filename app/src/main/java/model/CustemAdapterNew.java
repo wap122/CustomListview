@@ -25,6 +25,7 @@ public class CustemAdapterNew extends BaseAdapter {
     private MainActivity main;
     private OnCustomEventListener onCustomEvent;
     private ViewHolder viewHolder;
+
     public CustemAdapterNew(MainActivity main, Context context, ArrayList<Contact> arrContact) {
         super();
         this.context = context;
@@ -72,8 +73,9 @@ public class CustemAdapterNew extends BaseAdapter {
         });
         return convertView;
     }
+
     public void setCustomEventListener(OnCustomEventListener eventListener) {
-        this.onCustomEvent=eventListener;
+        this.onCustomEvent = eventListener;
         onCustomEvent.onEvent();
     }
 
