@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         lvContact.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(MainActivity.this, String.valueOf(arrayContact.get(position).getmName()), Toast.LENGTH_SHORT).show();
+                finish();
             }
         });
     }
