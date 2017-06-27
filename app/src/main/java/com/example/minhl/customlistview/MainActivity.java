@@ -3,6 +3,7 @@ package com.example.minhl.customlistview;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatCallback;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 import model.Contact;
 import model.CustemAdapterNew;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements OnCustomEventListener{
 
     private ListView lvContact;
     private ArrayList<Contact> arrayContact = new ArrayList<>();
@@ -26,15 +27,10 @@ public class MainActivity extends AppCompatActivity {
         lvContact = (ListView) findViewById(R.id.lv_contact);
 
         lvContact.setAdapter(new CustemAdapterNew(this,this, arrayContact));
-        lvContact.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(MainActivity.this, "Chạm vào Tên để thoát activity", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
-    public void finishactivity() {
+    @Override
+    public void onEvent() {
         finish();
     }
 

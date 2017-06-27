@@ -1,18 +1,16 @@
 package model;
 
-import android.app.Activity;
 import android.content.Context;
-import android.widget.Adapter;
 import android.widget.BaseAdapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import com.example.minhl.customlistview.MainActivity;
+import com.example.minhl.customlistview.OnCustomEventListener;
 import com.example.minhl.customlistview.R;
 
 import java.util.ArrayList;
@@ -24,12 +22,14 @@ import java.util.ArrayList;
 public class CustemAdapterNew extends BaseAdapter {
     private Context context;
     private ArrayList<Contact> arrContact;
-    private MainActivity mainActivity;
+    private MainActivity main;
+    private OnCustomEventListener onCustomEvent;
+    private ViewHolder viewHolder;
     public CustemAdapterNew(MainActivity main, Context context, ArrayList<Contact> arrContact) {
         super();
         this.context = context;
         this.arrContact = arrContact;
-        this.mainActivity=main;
+        this.main = main;
     }
 
     @Override
@@ -49,7 +49,6 @@ public class CustemAdapterNew extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder;
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.row_contact_layout, null);
             viewHolder = new ViewHolder();
@@ -68,10 +67,14 @@ public class CustemAdapterNew extends BaseAdapter {
         viewHolder.tvName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mainActivity.finishactivity();
+                setCustomEventListener(main);
             }
         });
         return convertView;
+    }
+    public void setCustomEventListener(OnCustomEventListener eventListener) {
+        this.onCustomEvent=eventListener;
+        onCustomEvent.onEvent();
     }
 
     private class ViewHolder {
