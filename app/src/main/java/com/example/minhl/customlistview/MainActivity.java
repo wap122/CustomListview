@@ -25,13 +25,17 @@ public class MainActivity extends AppCompatActivity {
         initWidget();
         lvContact = (ListView) findViewById(R.id.lv_contact);
 
-        lvContact.setAdapter(new CustemAdapterNew(this, arrayContact));
+        lvContact.setAdapter(new CustemAdapterNew(this,this, arrayContact));
         lvContact.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                finish();
+                Toast.makeText(MainActivity.this, "Chạm vào Tên để thoát activity", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void finishactivity() {
+        finish();
     }
 
     public void initWidget() {
